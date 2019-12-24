@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 function Menu() {
 
   const classes = useStyles();
-  console.log(classes)
   
   return <header className={classes.root}>
     <Toolbar className={classes.toolbar}>
