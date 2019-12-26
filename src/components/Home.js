@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -6,34 +7,49 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        background: 'url("/assets/skywalker.jpg") center',
-        padding: '4rem 0 2rem',
-        minHeight: '700px',
-        margin: '0 auto'
-    },
-    media: {
-        height: '150px'
-    },
-    card: {
-        background: '#000000',
-        color: 'white',
-        height: '400px',
-        flexBasis: '30%',
-        padding: '10px',
-        position: 'relative',
-        margin: '10px 1%',
-        boxSizing: 'border-box'
-    },
-    mainGrid: {
-        display: 'flex',
-        flexFlow: 'row wrap',
-        justifyContent: 'flex-start'
-    }
-}));
+
 
 function Home() {
+
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-device-width: 1224px)'
+    })
+    const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+    const isTabletOrMobileDevice = useMediaQuery({
+        query: '(max-device-width: 1224px)'
+    })
+    const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+    const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
+
+    const useStyles = makeStyles(theme => ({
+        root: {
+            background: 'url("/assets/skywalker.jpg") center no-repeat',
+            padding: '4rem 0 2rem',
+            minHeight: '700px',
+            margin: '0 auto',
+            backgroundSize: 'cover'
+        },
+        media: {
+            height: '150px'
+        },
+        card: {
+            background: '#000000',
+            color: 'white',
+            height: '400px',
+            flexBasis: '30%',
+            padding: '10px',
+            position: 'relative',
+            margin: '10px 1%',
+            boxSizing: 'border-box'
+        },
+        mainGrid: {
+            display: 'flex',
+            flexFlow: 'row wrap',
+            justifyContent: 'flex-start',
+            flexDirection: isTabletOrMobile ? 'column' : 'row'
+        }
+    }));
 
     const classes = useStyles();
 
@@ -50,6 +66,7 @@ function Home() {
     });
 
     return <section className={classes.root}>
+    
         <Grid
             className={classes.mainGrid}
 
