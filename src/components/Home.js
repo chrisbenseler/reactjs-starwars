@@ -7,6 +7,18 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 
+const useFetch = url => {
+    const [data, setData] = useState(null);
+
+    async function fetchData() {
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json);
+    }
+
+    useEffect(() => { fetchData() }, [url]);
+    return data;
+};
 
 
 function Home() {
@@ -25,7 +37,7 @@ function Home() {
     const useStyles = makeStyles(theme => ({
         root: {
             background: 'url("/assets/skywalker.jpg") center no-repeat',
-            padding: '4rem 0 2rem',
+            padding: '4rem 1rem 2rem',
             minHeight: '700px',
             margin: '0 auto',
             backgroundSize: 'cover'
@@ -53,23 +65,15 @@ function Home() {
 
     const classes = useStyles();
 
-    const [movies, setMovies] = useState([]);
-
-    useEffect(() => {
-
-        fetch('https://swapi.co/api/films')
-            .then(res => res.json())
-            .then(response => {
-                const movies = response.results.sort((a, b) => a.episode_id > b.episode_id ? 1 : -1)
-                setMovies(movies)
-            });
-    });
+    const query = 'https://swapi.co/api/films'
+    const data = useFetch(query)
+    
+    const movies = !!data ? data.results : []
 
     return <section className={classes.root}>
-    
+
         <Grid
             className={classes.mainGrid}
-
         >
             {
                 movies.map(movie => <Card
