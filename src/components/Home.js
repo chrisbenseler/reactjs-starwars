@@ -48,7 +48,6 @@ function Home() {
         card: {
             background: '#000000',
             color: 'white',
-            height: '400px',
             flexBasis: '30%',
             padding: '10px',
             position: 'relative',
