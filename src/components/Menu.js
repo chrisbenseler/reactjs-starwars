@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   image: {
-    height: '48px'
+    height: '32px'
   },
   toolbar: {
     backgroundColor: '#000000',
@@ -41,6 +41,7 @@ function Menu() {
       <img
         className={classes.image}
         src="assets/starwars.png" />
+
       <Button
         variant="outlined"
         color="primary"
