@@ -46,7 +46,8 @@ function Planets() {
             padding: '10px',
             position: 'relative',
             margin: '10px 1%',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            maxWidth: 'calc(100% - 10px)'
         },
         footer: {
             padding: '30px 0'
