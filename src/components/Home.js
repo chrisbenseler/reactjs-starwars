@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useFetch = url => {
     const [data, setData] = useState(null);
@@ -59,7 +59,9 @@ function Home() {
             display: 'flex',
             flexFlow: 'row wrap',
             justifyContent: 'flex-start',
-            flexDirection: isTabletOrMobile ? 'column' : 'row'
+            flexDirection: isTabletOrMobile ? 'column' : 'row',
+            width: isTabletOrMobile ? '100%' : '1224px',
+            margin: '0 auto'
         }
     }));
 
