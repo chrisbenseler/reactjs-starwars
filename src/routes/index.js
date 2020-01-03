@@ -8,6 +8,7 @@ export default function Routes() {
     return (
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/index.html" exact component={Home} />
         <Route path="/home" component={Home} />
         <Route path="/planets" component={Planets} />
       </Switch>
