@@ -7,7 +7,9 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    
+  },
+  image: {
+    height: '48px'
   },
   toolbar: {
     backgroundColor: '#000000',
@@ -36,6 +38,9 @@ function Menu() {
         }}
       >Movies
       </Button>
+      <img
+        className={classes.image}
+        src="assets/starwars.png" />
       <Button
         variant="outlined"
         color="primary"
