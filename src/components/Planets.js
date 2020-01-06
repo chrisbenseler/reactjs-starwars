@@ -109,8 +109,12 @@ function Planets() {
                             <ListItemText primary={plainFields[key].label} secondary={planet[key]} />
                         </ListItem> )}
                     </List>
+                    { planet.residents.films > 0 && 
                     <ExpandedList items={planet.films} title="Movies" />
+                    }
+                    { planet.residents.length > 0 && 
                     <ExpandedList items={planet.residents} title="Residents" />
+                    }
 
                     </CardContent>
                 </Card>)
