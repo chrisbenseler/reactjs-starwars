@@ -40,7 +40,7 @@ function Menu() {
       </Button>
       <img
         className={classes.image}
-        src="assets/starwars.png" />
+        src="/assets/starwars.png" />
 
       <Button
         variant="outlined"

@@ -9,10 +9,13 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { useHistory } from 'react-router-dom';
 
 import ExpandedList from '../shared/ExpandedList';
 
 function Planets() {
+
+    const history = useHistory()
 
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
@@ -106,11 +109,21 @@ function Planets() {
                     <CardContent>
                     <List>
                         { Object.keys(plainFields).map( key => <ListItem key={key}>
-                            <ListItemText primary={plainFields[key].label} secondary={planet[key]} />
+                            <ListItemText
+                                primary={plainFields[key].label}
+                                secondary={planet[key]}
+                            />
                         </ListItem> )}
                     </List>
-                    { planet.residents.films > 0 && 
-                    <ExpandedList items={planet.films} title="Movies" />
+                    { planet.films.length > 0 && 
+                    <ExpandedList
+                        items={planet.films}
+                        title="Movies"
+                        callback={ (item) => { 
+                            const id = item.split('https://swapi.co/api/films/')[1]
+                            history.push('/films/' + id)
+                        }}
+                    />
                     }
                     { planet.residents.length > 0 && 
                     <ExpandedList items={planet.residents} title="Residents" />

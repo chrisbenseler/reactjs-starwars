@@ -10,9 +10,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 function ExpandedList(props) {
 
-    console.log(props)
-
-
     return <ExpansionPanel>
         <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
@@ -22,7 +19,9 @@ function ExpandedList(props) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
             <List>
-                {props.items.map(item => <ListItem key={item}>
+                {props.items.map(item => <ListItem
+                    onClick={ () => props.callback != null ? props.callback(item) : {} }
+                    key={item}>
                     <ListItemText primary={item} />
                 </ListItem>)}
             </List>
