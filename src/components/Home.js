@@ -6,22 +6,14 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
+import { useHistory } from 'react-router-dom';
 
-const useFetch = url => {
-    const [data, setData] = useState(null);
-
-    async function fetchData() {
-        const response = await fetch(url);
-        const json = await response.json();
-        setData(json);
-    }
-
-    useEffect(() => { fetchData() }, [url]);
-    return data;
-};
+import useFetch from '../services/useFetch'
 
 
 function Home() {
+
+    const history = useHistory()
 
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
@@ -64,7 +56,7 @@ function Home() {
         }
     }));
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     const query = 'https://swapi.co/api/films'
     const data = useFetch(query)
@@ -79,6 +71,9 @@ function Home() {
             {
                 movies.map(movie => <Card
                     className={classes.card}
+                    onClick={ () => {
+                        history.push('/films/' + movie.episode_id)
+                    }}
                     key={movie.episode_id}>
                     <CardHeader
                         title={movie.title}
@@ -86,7 +81,7 @@ function Home() {
                     <CardMedia
                         className={classes.media}
                         image={"/assets/movies/movie_" + movie.episode_id + ".png"}
-                        title="Paella dish"
+                        title={movie.title}
                     />
                     <CardContent>
                         {movie.opening_crawl}

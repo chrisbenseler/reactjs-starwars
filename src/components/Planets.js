@@ -13,6 +13,17 @@ import { useHistory } from 'react-router-dom';
 
 import ExpandedList from '../shared/ExpandedList';
 
+const plainFields = {
+    rotation_period: { label: 'Rotation period' },
+    orbital_period: { label: 'Orbital period' },
+    diameter: { label: 'Diameter' },
+    climate: { label: 'Climate' },
+    gravity: { label: 'Gravity' },
+    terrain: { label: 'Terrain' },
+    surface_water: { label: 'Surface water' },
+    population: { label: 'Population' },
+}
+
 function Planets() {
 
     const history = useHistory()
@@ -29,13 +40,6 @@ function Planets() {
     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
     const useStyles = makeStyles(theme => ({
-       root: {
-            background: 'url("/assets/skywalker.jpg") center no-repeat',
-            padding: '4rem 1rem 2rem',
-            minHeight: '700px',
-            margin: '0 auto',
-            backgroundSize: 'cover'
-        },
         mainGrid: {
             display: 'flex',
             flexFlow: 'row wrap',
@@ -79,18 +83,6 @@ function Planets() {
         setFirstRender(false)
 
     }, [firstRender, fetchMoreListItems]);
-
-    const plainFields = {
-        rotation_period: { label: 'Rotation period' },
-        orbital_period: { label: 'Orbital period' },
-        diameter: { label: 'Diameter' },
-        climate: { label: 'Climate' },
-        gravity: { label: 'Gravity' },
-        terrain: { label: 'Terrain' },
-        surface_water: { label: 'Surface water' },
-        population: { label: 'Population' },
-    }
-
 
     return <section >
         Planets
