@@ -118,7 +118,14 @@ function Planets() {
                     />
                     }
                     { planet.residents.length > 0 && 
-                    <ExpandedList items={planet.residents} title="Residents" />
+                    <ExpandedList
+                        items={planet.residents}
+                        title="Residents"
+                        callback={ (item) => { 
+                            const id = item.split('https://swapi.co/api/people/')[1]
+                            history.push('/people/' + id)
+                        }}
+                    />
                     }
 
                     </CardContent>

@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../components/Home';
 import Planets from '../components/Planets';
 import Film from '../components/Film';
+import People from '../components/People';
 
 export default function Routes() {
     return (
@@ -13,6 +14,7 @@ export default function Routes() {
         <Route path="/home" component={Home} />
         <Route path="/planets" component={Planets} />
         <Route path="/films/:id" component={Film} />
+        <Route path="/people/:id" component={People} />
       </Switch>
     );
   }

@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
 
 import ExpandedList from '../shared/ExpandedList';
 
@@ -55,6 +56,8 @@ function Film() {
     }
   }));
 
+  const history = useHistory();
+
   const classes = useStyles();
 
   let { id } = useParams()
@@ -88,7 +91,14 @@ function Film() {
           </ListItem>)}
         </List>
         {movie.characters.length > 0 &&
-          <ExpandedList items={movie.characters} title="Characters" />
+          <ExpandedList
+            items={movie.characters}
+            title="Characters"
+            callback={ (item) => { 
+              const id = item.split('https://swapi.co/api/people/')[1]
+              history.push('/people/' + id)
+            }}
+          />
         }
         {movie.planets.length > 0 &&
           <ExpandedList items={movie.planets} title="Planets" />
@@ -100,7 +110,10 @@ function Film() {
           <ExpandedList items={movie.vehicles} title="Vehicles" />
         }
         {movie.species.length > 0 &&
-          <ExpandedList items={movie.species} title="Species" />
+          <ExpandedList
+            items={movie.species}
+            title="Species"
+          />
         }
       </CardContent>
     </Card> :
