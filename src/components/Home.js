@@ -44,7 +44,8 @@ function Home() {
             padding: '10px',
             position: 'relative',
             margin: '10px 1%',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            cursor: 'pointer'
         },
         mainGrid: {
             display: 'flex',
