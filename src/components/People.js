@@ -10,6 +10,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandedList from '../shared/ExpandedList';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import IconButton from '@material-ui/core/IconButton';  
 
 import {
   BrowserRouter as Router,
@@ -24,7 +27,12 @@ const plainFields = {
   eye_color: { label: 'Eye color' },
   birth_year: { label: 'Birth year' },
   gender: { label: 'Gender' },
-  homeworld: { label: 'Home world', link: true}
+  homeworld: { label: 'Home world', callback: (item, history) => {
+      console.log(item) 
+      const id = item.split('https://swapi.co/api/planets/')[1]
+      history.push('/planets/' + id)
+    }
+  }
 }
 
 function People() {
@@ -82,7 +90,16 @@ function People() {
         <ListItemText
             primary={plainFields[key].label}
             secondary={people[key]}
-        />
+            onClick={() => plainFields[key].callback != null ? plainFields[key].callback(people[key], history) : {}}
+        >
+        
+        {plainFields[key].callback && <ListItemSecondaryAction>
+            <IconButton edge="end" aria-label="Film">
+                <ArrowForwardIcon />
+            </IconButton>
+        </ListItemSecondaryAction>
+        }
+        </ListItemText>
         </ListItem>)}
     </List>
 

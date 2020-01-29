@@ -101,7 +101,14 @@ function Film() {
           />
         }
         {movie.planets.length > 0 &&
-          <ExpandedList items={movie.planets} title="Planets" />
+          <ExpandedList
+            items={movie.planets}
+            title="Planets"
+            callback={ (item) => { 
+              const id = item.split('https://swapi.co/api/planets/')[1]
+              history.push('/planets/' + id)
+            }}
+          />
         }
         {movie.starships.length > 0 &&
           <ExpandedList items={movie.starships} title="Starships" />
