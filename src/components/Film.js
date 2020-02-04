@@ -68,7 +68,7 @@ function Film() {
   return <section className={classes.mainGrid}>
 
     {movie ? <Card
-    className={classes.card}
+      className={classes.card}
     >
       <CardHeader
         title={movie.title}
@@ -79,7 +79,7 @@ function Film() {
       />
       <CardContent>
         <Typography variant="body2" component="span">
-          {movie.opening_crawl.replace( /[\r\n]+/gm, "" )}
+          {movie.opening_crawl.replace(/[\r\n]+/gm, "")}
         </Typography>
 
         <List>
@@ -94,7 +94,7 @@ function Film() {
           <ExpandedList
             items={movie.characters}
             title="Characters"
-            callback={ (item) => { 
+            callback={(item) => {
               const id = item.split('https://swapi.co/api/people/')[1]
               history.push('/people/' + id)
             }}
@@ -104,7 +104,7 @@ function Film() {
           <ExpandedList
             items={movie.planets}
             title="Planets"
-            callback={ (item) => { 
+            callback={(item) => {
               const id = item.split('https://swapi.co/api/planets/')[1]
               history.push('/planets/' + id)
             }}
@@ -114,7 +114,14 @@ function Film() {
           <ExpandedList items={movie.starships} title="Starships" />
         }
         {movie.vehicles.length > 0 &&
-          <ExpandedList items={movie.vehicles} title="Vehicles" />
+          <ExpandedList
+            items={movie.vehicles}
+            title="Vehicles"
+            callback={(item) => {
+              const id = item.split('https://swapi.co/api/vehicles/')[1]
+              history.push('/vehicles/' + id)
+            }}
+          />
         }
         {movie.species.length > 0 &&
           <ExpandedList
