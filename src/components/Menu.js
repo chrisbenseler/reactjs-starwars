@@ -52,6 +52,16 @@ function Menu() {
         }}
       >Planets
       </Button>
+      <Button
+        variant="outlined"
+        color="primary"
+        component={Link}
+        to="/about"
+        classes={{
+          root: classes.button
+        }}
+      >About
+      </Button>
   </Toolbar>
   </header>
 }

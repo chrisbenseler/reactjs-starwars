@@ -7,6 +7,7 @@ import Planet from '../components/Planet';
 import Film from '../components/Film';
 import People from '../components/People';
 import Vehicle from '../components/Vehicle';
+import About from '../components/About';
 
 export default function Routes() {
     return (
@@ -19,6 +20,7 @@ export default function Routes() {
         <Route path="/films/:id" component={Film} />
         <Route path="/people/:id" component={People} />
         <Route path="/vehicles/:id" component={Vehicle} />
+        <Route path="/about" component={About} />
       </Switch>
     );
   }

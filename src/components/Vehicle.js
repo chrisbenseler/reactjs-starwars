@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+
 import { useHistory } from 'react-router-dom';
 
 import ExpandedList from '../shared/ExpandedList';
@@ -59,7 +59,7 @@ function Vehicle() {
             position: 'relative',
             margin: '10px 1%',
             boxSizing: 'border-box',
-            maxWidth: 'calc(100% - 10px)'
+            width: 'calc(100% - 10px)'
         }
     }));
 
@@ -80,9 +80,9 @@ function Vehicle() {
             <CardHeader
                 title={vehicle.name}
             ></CardHeader>
-           
+
             <CardContent>
-           
+
                 <List>
                     {Object.keys(plainFields).map(key => <ListItem key={key}>
                         <ListItemText
